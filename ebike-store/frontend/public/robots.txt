@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /account
+Disallow: /checkout
+Disallow: /cart
+Disallow: /order/
+Disallow: /pay/
+
+# Replace with your real domain. In production /sitemap.xml is served by the backend (see README).
+Sitemap: https://YOUR-DOMAIN.example/sitemap.xml

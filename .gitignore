@@ -1,0 +1,30 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies
+node_modules/
+**/node_modules/
+.venv/
+**/.venv/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
+
+# Backups
+ebike-store/backups/
+
+# Build output
+dist/
+**/dist/
+build/
+**/build/
+
+# Local system files
+.DS_Store
