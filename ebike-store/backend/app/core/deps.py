@@ -18,8 +18,14 @@ def client_ip(request: Request) -> str:
 
 def set_cookie(response: Response, key: str, value: str, httponly: bool, max_age: int | None = None):
     response.set_cookie(
-        key, value, httponly=httponly, secure=settings.cookie_secure, samesite="lax",
-        domain=settings.cookie_domain, max_age=max_age, path="/",
+        key,
+        value,
+        httponly=httponly,
+        secure=settings.cookie_secure,
+        samesite="none" if settings.cookie_secure else "lax",
+        domain=settings.cookie_domain,
+        max_age=max_age,
+        path="/",
     )
 
 
