@@ -74,7 +74,7 @@ class Address(Base, TimestampMixin):
     line2: Mapped[str | None] = mapped_column(sa.String(200))
     city: Mapped[str] = mapped_column(sa.String(100))
     region: Mapped[str] = mapped_column(sa.String(100))
-    country: Mapped[str] = mapped_column(sa.String(2))
+    country: Mapped[str] = mapped_column(sa.String(100))
     postal_code: Mapped[str | None] = mapped_column(sa.String(20))
 
 
@@ -233,7 +233,7 @@ class Order(Base, TimestampMixin):
     ship_line2: Mapped[str | None] = mapped_column(sa.String(200))
     ship_city: Mapped[str] = mapped_column(sa.String(100))
     ship_region: Mapped[str] = mapped_column(sa.String(100))
-    ship_country: Mapped[str] = mapped_column(sa.String(2))
+    ship_country: Mapped[str] = mapped_column(sa.String(100))
     ship_postal_code: Mapped[str | None] = mapped_column(sa.String(20))
     shipping_method: Mapped[str] = mapped_column(sa.String(20))
     status: Mapped[str] = mapped_column(sa.String(20), default="pending_payment", index=True)

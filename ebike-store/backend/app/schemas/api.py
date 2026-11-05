@@ -56,13 +56,13 @@ class AddressIn(BaseModel):
     line2: str | None = Field(default=None, max_length=200)
     city: str = Field(min_length=2, max_length=100)
     region: str = Field(min_length=2, max_length=100)
-    country: str = Field(pattern=r"^[A-Za-z]{2}$")
+    country: str = Field(min_length=2, max_length=100)
     postal_code: str | None = Field(default=None, max_length=20)
 
     @field_validator("country")
     @classmethod
-    def up(cls, v):
-        return v.upper()
+    def clean_country(cls, v):
+        return " ".join(v.strip().split())
 
     @field_validator("phone")
     @classmethod

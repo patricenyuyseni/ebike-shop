@@ -6,7 +6,6 @@ import { useAuth } from '../context/Auth'
 import { useCart } from '../context/Cart'
 import { api, ApiError } from '../lib/api'
 import { formatMoney } from '../lib/format'
-import { useStoreConfig } from '../lib/config'
 import type { Quote } from '../lib/types'
 import { validateAddress, type Errors } from '../lib/validate'
 
@@ -23,7 +22,6 @@ const METHODS = [
 
 export default function Checkout() {
   const { user } = useAuth()
-  const cfg = useStoreConfig()
   const { cart, loading, refresh } = useCart()
   const nav = useNavigate()
 
@@ -260,31 +258,16 @@ export default function Checkout() {
                 error={errors.region}
               />
 
-              <div className="space-y-1">
-                <label className="label" htmlFor="checkout-country">
-                  Country
-                </label>
-                <select
-                  id="checkout-country"
-                  name="country"
-                  autoComplete="country"
-                  required
-                  value={f.country}
-                  onChange={set('country')}
-                  aria-invalid={Boolean(errors.country)}
-                  className={`field w-full ${errors.country ? 'border-red-500' : ''}`}
-                >
-                  <option value="">Choose a country</option>
-                  {cfg.countries.map((country) => (
-                    <option key={country} value={country}>
-                      {country === 'CM' ? 'Cameroon' : country}
-                    </option>
-                  ))}
-                </select>
-                {errors.country && (
-                  <p className="text-sm text-red-600">{errors.country}</p>
-                )}
-              </div>
+              <Input
+                className="sm:col-span-2"
+                label="Country"
+                autoComplete="country-name"
+                required
+                placeholder="Enter your country"
+                value={f.country}
+                onChange={set('country')}
+                error={errors.country}
+              />
 
               <Input
                 label="Postal code (if applicable)"

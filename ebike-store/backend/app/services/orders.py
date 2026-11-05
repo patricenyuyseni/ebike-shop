@@ -245,12 +245,6 @@ def create_order(
             )
         return existing, False
 
-    if data.country not in settings.countries:
-        raise HTTPException(
-            400,
-            f"We currently deliver only to: {', '.join(settings.countries)}.",
-        )
-
     if not cart or not cart.items:
         raise HTTPException(400, "Your cart is empty.")
 
